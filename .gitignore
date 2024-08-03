@@ -1,0 +1,57 @@
+# .gitignore for ASP.NET Core
+
+# Ignore build outputs
+bin/
+obj/
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# Visual Studio Code
+.vscode/
+
+# Rider
+.idea/
+
+# DotNet
+*.swp
+*.sln.ide
+*.sln.docstates
+*.sln.cache
+*.sln.ide
+*.sln.docstates
+*.sln.cache
+*.sln.ide
+*.sln.docstates
+*.sln.cache
+
+# Logs
+*.log
+
+# NPM packages
+node_modules/
+
+# Environment variables
+.env
+
+# Publish output
+publish/
+
+# Database files
+*.mdf
+*.ldf
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# JetBrains Rider
+.idea/
+*.sln.iml
