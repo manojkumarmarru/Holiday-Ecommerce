@@ -55,8 +55,16 @@ public class Startup
             {
                 options.JsonSerializerOptions.PropertyNamingPolicy = null;
             });
+
         services.AddScoped<IDestinationRepository, DestinationRepository>();
+        services.AddScoped<IHotDealsRepository, HotDealsRepository>();
+        services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IBookingRepository, BookingRepository>();
+        services.AddScoped<UserService>();
+        services.AddScoped<HotDealsService>();
         services.AddScoped<DestinationService>();
+        services.AddScoped<BookingService>();
+        
         services.AddAuthorization();
     }
 

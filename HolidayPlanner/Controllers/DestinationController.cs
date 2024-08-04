@@ -14,19 +14,32 @@ public class DestinationController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<ActionResult<List<Destination>>> Get() => await _service.GetAllAsync();
+    public async Task<ActionResult<List<Destination>>> Get(){
+        return await _service.GetAllAsync();
+    }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<Destination?>> Get(int id) => await _service.GetByIdAsync(id);
+    public async Task<ActionResult<Destination?>> Get(string id){
+        return await _service.GetByIdAsync(id);
+    }
 
     [HttpPost]
-    public async Task<ActionResult> Post(Destination destination) { await _service.AddAsync(destination); return Ok(); }
+    public async Task<ActionResult> Post(Destination destination){ 
+        await _service.AddAsync(destination); 
+        return Ok(); 
+    }
 
     [HttpPut]
-    public async Task<ActionResult> Put(Destination destination) { await _service.UpdateAsync(destination); return Ok(); }
+    public async Task<ActionResult> Put(Destination destination){ 
+        await _service.UpdateAsync(destination); 
+        return Ok(); 
+    }
 
     [HttpDelete("{id}")]
-    public async Task<ActionResult> Delete(int id) { await _service.DeleteAsync(id); return Ok(); }
+    public async Task<ActionResult> Delete(string id){ 
+        await _service.DeleteAsync(id); 
+        return Ok(); 
+    }
 
     [HttpGet("verify")]
     public async Task<IActionResult> VerifyDbConnection()

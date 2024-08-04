@@ -10,14 +10,14 @@ public class DestinationRepository : IDestinationRepository
     }
 
     public async Task<List<Destination>> GetAllAsync() => await _context.Destinations.ToListAsync();
-    public async Task<Destination?> GetByIdAsync(int id)
+    public async Task<Destination?> GetByIdAsync(string id)
     {
         return await _context.Destinations.FindAsync(id);
     }
 
     public async Task AddAsync(Destination destination) { _context.Destinations.Add(destination); await _context.SaveChangesAsync(); }
     public async Task UpdateAsync(Destination destination) { _context.Destinations.Update(destination); await _context.SaveChangesAsync(); }
-    public async Task DeleteAsync(int id)
+    public async Task DeleteAsync(string id)
     {
         var destination = await _context.Destinations.FindAsync(id);
         if (destination != null)

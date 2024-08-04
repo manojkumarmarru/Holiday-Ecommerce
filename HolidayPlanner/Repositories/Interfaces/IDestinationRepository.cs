@@ -1,8 +1,8 @@
 public interface IDestinationRepository
 {
     Task<List<Destination>> GetAllAsync();
-    Task<Destination?> GetByIdAsync(int id);
+    Task<Destination?> GetByIdAsync(string id);
     Task AddAsync(Destination destination);
     Task UpdateAsync(Destination destination);
-    Task DeleteAsync(int id);
+    Task DeleteAsync(string id);
 }

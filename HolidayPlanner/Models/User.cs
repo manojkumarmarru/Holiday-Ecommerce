@@ -1,7 +1,11 @@
+using System.Numerics;
+
 public class User
 {
-    public int Id { get; set; }
-    public required string Username { get; set; }
+    public required string UserId { get; set; }
+    public required string Name { get; set; }
+    public required string EmailId { get; set; }
+    public long ContactNo { get; set; }
     public required string Password { get; set; }
-    // Other properties
+    public List<Booking>? Booking { get; set; }
 }

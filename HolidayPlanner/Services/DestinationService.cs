@@ -7,13 +7,20 @@ public class DestinationService
         _repository = repository;
     }
 
-    public async Task<List<Destination>> GetAllAsync() => await _repository.GetAllAsync();
-    public async Task<Destination?> GetByIdAsync(int id)
+    public async Task<List<Destination>> GetAllAsync(){ 
+        return await _repository.GetAllAsync();
+    }
+    public async Task<Destination?> GetByIdAsync(string id)
     {
         return await _repository.GetByIdAsync(id);
     }
-
-    public async Task AddAsync(Destination destination) => await _repository.AddAsync(destination);
-    public async Task UpdateAsync(Destination destination) => await _repository.UpdateAsync(destination);
-    public async Task DeleteAsync(int id) => await _repository.DeleteAsync(id);
+    public async Task AddAsync(Destination destination){
+        await _repository.AddAsync(destination);
+    }
+    public async Task UpdateAsync(Destination destination){
+        await _repository.UpdateAsync(destination);
+    }
+    public async Task DeleteAsync(string id){
+        await _repository.DeleteAsync(id);
+    }
 }
