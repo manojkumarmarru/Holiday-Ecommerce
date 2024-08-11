@@ -20,23 +20,31 @@ public class BookingController : ControllerBase
 
     [HttpGet("{id}")]
     public async Task<ActionResult<Booking?>> Get(string id){
+        if(string.IsNullOrEmpty(id))
+            return BadRequest("Id is required");
         return await _service.GetByIdAsync(id);
     }
 
     [HttpPost]
     public async Task<ActionResult> Post(Booking booking){ 
+        if(!ModelState.IsValid) 
+            return BadRequest(ModelState);
         await _service.AddAsync(booking); 
         return Ok(); 
     }
 
     [HttpPut]
     public async Task<ActionResult> Put(Booking booking){ 
+        if(!ModelState.IsValid) 
+            return BadRequest(ModelState);
         await _service.UpdateAsync(booking); 
         return Ok(); 
     }
 
     [HttpDelete("{id}")]
     public async Task<ActionResult> Delete(string id){ 
+        if(string.IsNullOrEmpty(id))
+            return BadRequest("Id is required");
         await _service.DeleteAsync(id); 
         return Ok(); 
     }

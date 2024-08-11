@@ -20,23 +20,31 @@ public class HotDealsController : ControllerBase
 
     [HttpGet("{id}")]
     public async Task<ActionResult<HotDeals?>> Get(string id){
+        if(string.IsNullOrEmpty(id))
+            return BadRequest("Hot Deal Id is required");
         return await _service.GetByIdAsync(id);
     }
 
     [HttpPost]
     public async Task<ActionResult> Post(HotDeals hotDeal){ 
+        if(!ModelState.IsValid) 
+            return BadRequest(ModelState);
         await _service.AddAsync(hotDeal); 
         return Ok(); 
     }
 
     [HttpPut]
     public async Task<ActionResult> Put(string id, HotDeals hotDeal){ 
+        if(!ModelState.IsValid) 
+            return BadRequest(ModelState);
         await _service.UpdateAsync(id, hotDeal); 
         return Ok(); 
     }
 
     [HttpDelete("{id}")]
     public async Task<ActionResult> Delete(string id) { 
+        if(string.IsNullOrEmpty(id))
+            return BadRequest("Hot Deal Id is required");
         await _service.DeleteAsync(id); 
         return Ok(); 
     }

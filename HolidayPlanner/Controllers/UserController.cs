@@ -22,12 +22,16 @@ public class UserController : ControllerBase
     [HttpGet("{id}")]
     public async Task<ActionResult<User?>> Get(string id)
     {
+        if(string.IsNullOrEmpty(id))
+            return BadRequest("User Id is required");
         return await _service.GetByIdAsync(id);
     }
 
     [HttpPost]
     public async Task<ActionResult> Post(User user)
     {
+        if (!ModelState.IsValid)
+            return BadRequest(ModelState);
         await _service.AddAsync(user);
         return Ok();
     }
@@ -35,6 +39,8 @@ public class UserController : ControllerBase
     [HttpPut]
     public async Task<ActionResult> Put(User user)
     {
+        if (!ModelState.IsValid)
+            return BadRequest(ModelState);
         await _service.UpdateAsync(user);
         return Ok();
     }
@@ -42,6 +48,8 @@ public class UserController : ControllerBase
     [HttpDelete("{id}")]
     public async Task<ActionResult> Delete(string id)
     {
+        if(string.IsNullOrEmpty(id))
+            return BadRequest("User Id is required");
         await _service.DeleteAsync(id);
         return Ok();
     }

@@ -20,23 +20,31 @@ public class DestinationController : ControllerBase
 
     [HttpGet("{id}")]
     public async Task<ActionResult<Destination?>> Get(string id){
+        if(string.IsNullOrEmpty(id))
+            return BadRequest("Destination ID is required");
         return await _service.GetByIdAsync(id);
     }
 
     [HttpPost]
     public async Task<ActionResult> Post(Destination destination){ 
+        if(!ModelState.IsValid) 
+            return BadRequest(ModelState);
         await _service.AddAsync(destination); 
         return Ok(); 
     }
 
     [HttpPut]
     public async Task<ActionResult> Put(Destination destination){ 
+        if(!ModelState.IsValid) 
+            return BadRequest(ModelState);
         await _service.UpdateAsync(destination); 
         return Ok(); 
     }
 
     [HttpDelete("{id}")]
     public async Task<ActionResult> Delete(string id){ 
+        if(string.IsNullOrEmpty(id))
+            return BadRequest("Destination ID is required");
         await _service.DeleteAsync(id); 
         return Ok(); 
     }
